@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Учёт личных расходов студента</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <h1>Учёт личных расходов</h1>
+      <label class="month-picker">
+        Месяц
+        <input type="month" id="month-input">
+      </label>
+    </header>
+
+    <section class="card">
+      <h2>Добавить расход</h2>
+      <form id="expense-form" novalidate>
+        <div class="field">
+          <label for="amount">Сумма</label>
+          <input type="number" id="amount" name="amount" min="0.01" step="0.01" placeholder="0.00">
+        </div>
+        <div class="field">
+          <label for="category">Категория</label>
+          <select id="category" name="category">
+            <option value="" disabled selected>Выберите категорию</option>
+            <option value="Еда">Еда</option>
+            <option value="Транспорт">Транспорт</option>
+            <option value="Жильё">Жильё</option>
+            <option value="Учёба">Учёба</option>
+            <option value="Развлечения">Развлечения</option>
+            <option value="Здоровье">Здоровье</option>
+            <option value="Прочее">Прочее</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="date">Дата</label>
+          <input type="date" id="date" name="date">
+        </div>
+        <div class="field field--wide">
+          <label for="description">Описание <span class="optional">(необязательно)</span></label>
+          <input type="text" id="description" name="description" placeholder="Например, обед в кафе" maxlength="200">
+        </div>
+        <div class="field field--action">
+          <button type="submit">Добавить</button>
+        </div>
+      </form>
+      <p id="form-error" class="form-error" role="alert" hidden></p>
+    </section>
+
+    <section class="card">
+      <h2>Итоги за месяц</h2>
+      <div class="totals">
+        <div class="totals__grand">
+          <span class="totals__label">Общий итог</span>
+          <span class="totals__value" id="grand-total">0</span>
+        </div>
+        <ul class="totals__categories" id="category-totals"></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Расходы за месяц</h2>
+      <ul class="expense-list" id="expense-list"></ul>
+      <p class="empty-state" id="empty-state" hidden>Расходов за этот месяц пока нет.</p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
